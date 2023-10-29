@@ -1,7 +1,7 @@
 export default function App() {
   let randomNumber = Math.floor(Math.random() * 3);
   const xItemArray = ["Willy the Goblin","Big Daddy","Father Christmas"];
-  const showStory = false;
+    const showStory = false;
   const xItem = "";
   const yItem = "";
   const zItem = "";
