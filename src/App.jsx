@@ -1,7 +1,27 @@
+import { useState } from "react";
+
 export default function App() {
-  let randomNumber = Math.floor(Math.random() * 3);
-  const xItemArray = ["Willy the Goblin","Big Daddy","Father Christmas"];
-    const showStory = false;
+  const [baseName, setBaseName] = useState(["Bob"]);
+
+  function storySetUp(event) {
+    event.preventDefault();
+    const customname = event.target.elements.customname;
+    const newName = customname.value;
+    setBaseName([].concat(baseName, [newName]));
+    
+    randomNumber = Math.floor(Math.random() * 3);
+    xItemArray = ["Willy the Goblin","Big Daddy","Father Christmas"];
+    yItemArray = ["the soup kitchen","Disneyland","the White House"];
+    zItemArray = ["spontaneously combusted","melted into a puddle on the sidewalk","turned into a slug and crawled away"];
+    xItem = xItemArray[randomNumber];
+    randomNumber = Math.floor(Math.random() * 3);
+    yItem = yItemArray[randomNumber];
+    randomNumber = Math.floor(Math.random() * 3);
+    zItem = zItemArray[randomNumber];
+  }
+  let randomNumber;
+  const button = document.querySelector('.button');
+  const showStory = false;
   const xItem = "";
   const yItem = "";
   const zItem = "";
@@ -10,7 +30,7 @@ export default function App() {
     <>
       <div>
         <label htmlFor="customname">Enter custom name:</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder="" className="customname"/>
       </div>
       <div>
         <label htmlFor="us">US</label>
@@ -19,8 +39,15 @@ export default function App() {
         <input type="radio" value="uk" checked={ukus === "uk"} />
       </div>
       <div>
-        <button>Generate random story</button>
+        <button className="button">Generate random story</button>
       </div>
+      
+    
+
+
+
+      button.addEventListener('click', storySetUp);
+
       {showStory && (
         <p>
           It was 94 fahrenheit outside, so {xItem} went for a walk. When they
